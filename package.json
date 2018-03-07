@@ -1,0 +1,84 @@
+{
+  "name": "hapi-project",
+  "version": "0.0.0-development",
+  "description": "Generic description ",
+  "main": "dist/index.js",
+  "scripts": {
+    "start":
+      "nodemon src/index.js --exec \"node --require 'dotenv/config' --require 'babel-register'\"",
+    "start:prod": "node --require dotenv/config dist/index.js",
+    "debug": "nodemon --inspect src/index.js --exec babel-node",
+    "test": "jest --coverage",
+    "test-live": "jest --watch",
+    "build": "babel src -d dist --ignore '**/__tests__' -s --delete-dir-on-start",
+    "lint": "eslint \"{src/**/*.js,*.js}\" ",
+    "precommit": "lint-staged",
+    "cm": "git-cz",
+    "commitmsg": "commitlint -e",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nargonath/placeholder.git"
+  },
+  "keywords": ["nodejs", "async-await", "hapijs"],
+  "author": "Nargonath <jonas.pauthier@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nargonath/placeholder/issues"
+  },
+  "homepage": "https://github.com/Nargonath/placeholder#readme",
+  "lint-staged": {
+    "{src/**/*.js,*.js}": ["prettier --write", "eslint", "git add"],
+    "{src/**/*.json,*.json}": ["prettier --write", "git add"]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "release": {
+    "getLastRelease": "last-release-git"
+  },
+  "dependencies": {
+    "chalk": "2.3.2",
+    "confidence": "3.0.2",
+    "dotenv": "5.0.1",
+    "hapi": "17.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.0.0-beta.40",
+    "@commitlint/cli": "6.1.3",
+    "@commitlint/config-conventional": "6.1.3",
+    "@dixeed/eslint-config": "2.0.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.2.2",
+    "babel-jest": "22.4.1",
+    "babel-plugin-module-resolver": "3.1.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-preset-env": "1.6.1",
+    "babel-register": "6.26.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "4.18.2",
+    "eslint-plugin-jest": "21.13.0",
+    "husky": "0.14.3",
+    "jest": "22.4.2",
+    "last-release-git": "0.0.3",
+    "lint-staged": "7.0.0",
+    "nodemon": "1.17.1",
+    "prettier": "1.11.1",
+    "semantic-release": "15.0.0",
+    "travis-deploy-once": "4.3.4"
+  }
+}
