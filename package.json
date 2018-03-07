@@ -14,7 +14,7 @@
     "lint": "eslint \"{src/**/*.js,*.js}\" ",
     "precommit": "lint-staged",
     "cm": "git-cz",
-    "commitmsg": "commitlint -e",
+    "commitmsg-disable": "commitlint -e",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
