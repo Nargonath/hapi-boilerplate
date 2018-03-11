@@ -4,9 +4,8 @@
   "description": "Generic description ",
   "main": "dist/index.js",
   "scripts": {
-    "start":
-      "nodemon src/index.js --exec \"node --require 'dotenv/config' --require 'babel-register'\"",
-    "start:prod": "node --require dotenv/config dist/index.js",
+    "start": "nodemon src/index.js --exec babel-node",
+    "start:prod": "node dist/index.js",
     "debug": "nodemon --inspect src/index.js --exec babel-node",
     "test": "jest --coverage",
     "test-live": "jest --watch",
@@ -52,8 +51,10 @@
   "dependencies": {
     "chalk": "2.3.2",
     "confidence": "3.0.2",
-    "dotenv": "5.0.1",
-    "hapi": "17.2.2"
+    "envy": "1.0.0",
+    "hapi": "17.2.2",
+    "hapi-sequelizejs": "1.0.0",
+    "sequelize": "4.36.0"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.40",

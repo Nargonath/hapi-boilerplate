@@ -1,14 +1,50 @@
 /* eslint-disable no-process-env */
 import Confidence from 'confidence';
+import envy from 'envy';
 
-const criteria = { env: process.env.NODE_ENV };
+const configValues = envy();
+const criteria = { env: configValues.nodeEnv };
 const store = new Confidence.Store();
+
 export const getConfig = key => store.get(key, criteria);
 
 const config = {
   database: {
     name: 'mainDb',
-    credentials: {},
+    credentials: {
+      dbName: configValues.databaseName,
+      user: configValues.databaseUser,
+      pass: configValues.databasePass,
+      dialect: configValues.databaseDialect,
+      host: configValues.databaseHost,
+      port: configValues.databasePort,
+    },
+  },
+
+  server: {
+    host: configValues.host,
+    port: configValues.port,
+  },
+
+  security: {
+    bcryptRound: {
+      $filter: 'env',
+      production: configValues.bcryptRound,
+      development: configValues.bcryptRound,
+      test: 1,
+    },
+    jwt: {
+      key: configValues.jwtKey,
+      cookieOptions: {
+        ttl: 1000 * 60 * 60 * 24 * 2, // valid for 2 days
+        isSecure: true,
+        isHttpOnly: true,
+        encoding: 'none',
+        clearInvalid: false,
+        strictHeader: true,
+      },
+    },
+    hash: { algorithm: configValues.hashAlgorithm },
   },
 };
 
