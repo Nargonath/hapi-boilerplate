@@ -19,6 +19,11 @@ const config = {
       host: configValues.databaseHost,
       port: configValues.databasePort,
     },
+    logging: {
+      $filter: 'env',
+      production: false,
+      development: console.log,
+    },
   },
 
   server: {
