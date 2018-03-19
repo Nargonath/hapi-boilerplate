@@ -54,6 +54,7 @@
     "envy": "^1.0.0",
     "hapi": "^17.2.2",
     "hapi-sequelizejs": "^1.0.0",
+    "joi": "^13.1.2",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.36.0"
